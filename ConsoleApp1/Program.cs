@@ -22,7 +22,9 @@ class Program
             {
                 Console.Write(current[i] + " ");
             }
+
             Console.WriteLine();
+
             int[] two = StepenDva(N);
             Console.WriteLine("Массив, содержащий степени двойки до N:");
             for (int i = 0; i < two.Length; i++)
@@ -30,6 +32,18 @@ class Program
                 Console.Write(two[i] + " ");
             }
             Console.WriteLine();
+
+
+            Console.Write("Введите первый член арифметической прогрессии: ");
+            int first = int.Parse(Console.ReadLine());
+            Console.Write("Введите разность арифметической прогрессии: ");
+            int dif = int.Parse(Console.ReadLine());
+            int[] arithmPr = ArProgres(N, first, dif);
+            Console.WriteLine("Массив, содержащий первые N членов арифметической прогрессии:");
+            for (int i = 0; i < N; i++)
+            {
+                Console.Write(arithmPr[i] + " ");
+            }
         }
     }
 
@@ -55,6 +69,17 @@ class Program
             two[i] = (int)Math.Pow(2, i + 1);
         }
         return two;
+    }
+
+    static int[] ArProgres(int N, int first, int dif)
+    {
+        int[] arithmPr = new int[N];
+        arithmPr[0] = first;
+        for (int i = 1; i < N; i++)
+        {
+            arithmPr[i] = arithmPr[i - 1] + dif;
+        }
+        return arithmPr;
     }
 }
 
